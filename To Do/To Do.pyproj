@@ -66,12 +66,13 @@
     <Folder Include="todo\" />
     <Folder Include="todo\migrations\" />
     <Folder Include="todo\templates\" />
-    <Folder Include="todo\templates\MyApp1\" />
+    <Folder Include="todo\templates\todo\" />
     <Folder Include="templates\" />
     <Folder Include="To_Do\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="todo\templates\MyApp1\index.html" />
+    <Content Include="todo\templates\todo\task_list.html" />
+    <Content Include="todo\templates\todo\index.html" />
     <Content Include="templates\todo.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
@@ -103,6 +104,9 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
+    <Content Include="todo\templates\todo\task_detail.html" />
+    <Content Include="todo\templates\todo\task_form.html" />
+    <Content Include="todo\templates\todo\task_confirm_delete.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">

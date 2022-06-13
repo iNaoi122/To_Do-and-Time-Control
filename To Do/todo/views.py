@@ -1,20 +1,31 @@
-from http.client import HTTPResponse
+from .models import Task
 from django.shortcuts import render
-from .models import TodoList
-from django.http import HttpResponseRedirect
-
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView , UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect 
 # Create your views here.
 
-def todoView(request):
-    all_todo_item = TodoList.objects.all()
-    return render(request, 'todo.html', {'all_items': all_todo_item})
+class TaskList(ListView):
+    model = Task
+    context_object_name = "tasks"
+    template_name = "todo/tasks_list.html"
 
-def AddTodoItem(request):
-    new_item = TodoList(content = request.POST["content"])
-    new_item.save()
-    return HttpResponseRedirect('/')
+class TaskDetailView(DetailView):
+    model = Task
 
-def DeleteTodoItem(request, i):
-    TodoList.objects.get(id = i).delete()
-    return HttpResponseRedirect('/')
+class TaskCreateView(CreateView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("tasks")
 
+class TaskUpdateView(UpdateView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("tasks")
+
+class TaskDeleteView(DeleteView):
+    model = Task
+    context_object_name = "task"
+    success_url = reverse_lazy("tasks")
