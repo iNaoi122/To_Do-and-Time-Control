@@ -107,6 +107,8 @@
     <Content Include="todo\templates\todo\task_detail.html" />
     <Content Include="todo\templates\todo\task_form.html" />
     <Content Include="todo\templates\todo\task_confirm_delete.html" />
+    <Content Include="todo\templates\todo\login.html" />
+    <Content Include="todo\templates\todo\register.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">

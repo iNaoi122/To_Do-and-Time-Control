@@ -1,5 +1,7 @@
 <h1>Task Form</h1>
 
+<button type="button" onclick="location.href='{{ tasks }}/'">Back</button>
+
 <form method="post" action="">
     {% csrf_token %}
     {{form.as_p}}
