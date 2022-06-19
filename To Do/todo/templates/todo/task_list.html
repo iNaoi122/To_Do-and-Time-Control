@@ -5,10 +5,15 @@
 <a href='{% url "login" %}'>Login</a>
 {% endif %}
 
-<hr />
-
+<hr>
 <h1>My To Do list</h1>
 <a href="{% url 'task-create' %}">Add Tasks</a>
+
+<form method="get">
+    <input type="text" name="search-area"  value="{{search_input}}"/>
+    <input type="submit" value="Search">
+</form>
+
 <table>
     <tr>
         <th>Item</th>
