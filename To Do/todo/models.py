@@ -14,3 +14,9 @@ class Task(models.Model):
 
     class Meta:
         ordering = ['complete']
+
+class Timer(models.Model):
+    start = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self

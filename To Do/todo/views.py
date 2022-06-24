@@ -1,6 +1,5 @@
-from tempfile import template
-from .models import Task
-from django.shortcuts import render, redirect
+from .models import Task, Timer
+from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView , UpdateView, DeleteView, FormView
@@ -22,14 +21,8 @@ class TaskList(LoginRequiredMixin, ListView):
         context['tasks'] = context['tasks'].filter(user = self.request.user)
         context['count'] = context['tasks'].filter(complete = False).count()
 
-        search_input = self.request.GET.get("search-area") or ''
-
-        if search_input:
-            context["tasks"] = context["tasks"].filter(title__icontains = search_input)
-
-        context["search_input"] = search_input
-
         return context
+
 
 class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task
@@ -77,3 +70,7 @@ class RegisterUser(FormView):
         if self.request.user.is_authenticated:
             return redirect("tasks")
         return super(RegisterUser, self).get(*args, **kwargs)
+
+class TaskTimer(LoginRequiredMixin, ListView):
+    model = Timer
+    template_name = "todo/timer.html"

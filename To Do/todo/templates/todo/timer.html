@@ -1,0 +1,50 @@
+{% load static %}
+<input type="text" id="time" />
+
+<input type="button" value="Start"  id="start" />
+<input type="button" value="Pause" id="pause"/>
+<input type="button" value="Stop"  id="stop"/>
+<div id="countdown"></div>
+<script>
+    let buttonStart = document.getElementById("start");
+    let Countdown = document.getElementById('countdown');
+    let ValueTime = document.getElementById("time");
+    let buttonStop = document.getElementById("stop")
+    let buttonPause = document.getElementById("pause")
+
+    let pause_flag = false
+
+    buttonStart.addEventListener("click", function () {
+        if (!pause_flag) {
+            time = parseInt(ValueTime.value) * 60
+        }
+        else {
+            timer = setInterval(update_time, 1000)
+
+        }
+    })
+    
+    timer = setInterval(update_time, 1000)
+
+    function update_time()
+    {
+            let min = Math.floor(time / 60);
+            let sec = time % 60;
+        time--;
+        if (time <= 0) {
+            clearInterval(timer);
+            Countdown.innerHTML = "Timer complete";
+        }
+        else {
+            Countdown.innerHTML = min + ":" + sec;
+        }
+        buttonStop.addEventListener("click", function () {
+            time = 0
+        })
+        buttonPause.addEventListener("click", function () {
+            clearInterval(timer)
+            pause_flag = true
+        })
+    }
+
+</script>

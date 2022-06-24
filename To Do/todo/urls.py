@@ -1,5 +1,5 @@
 from django.urls import path
-from todo.views import TaskList , TaskDetailView, TaskCreateView, TaskUpdateView, TaskDeleteView, TaskLoginView, RegisterUser
+from todo.views import TaskList , TaskDetailView, TaskCreateView, TaskUpdateView, TaskDeleteView, TaskLoginView, RegisterUser, TaskTimer
 from django.contrib.auth.views import LogoutView
 urlpatterns=[
     path('', TaskList.as_view() , name='tasks'),
@@ -10,6 +10,5 @@ urlpatterns=[
     path('login/', TaskLoginView.as_view() , name='login'),
     path('logout/', LogoutView.as_view(next_page="login") , name='logout'),
     path('register/', RegisterUser.as_view() , name='register'),
-
-
+    path("timer/", TaskTimer.as_view(), name="timer"),
 ]

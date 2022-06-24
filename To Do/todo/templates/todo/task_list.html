@@ -9,11 +9,6 @@
 <h1>My To Do list</h1>
 <a href="{% url 'task-create' %}">Add Tasks</a>
 
-<form method="get">
-    <input type="text" name="search-area"  value="{{search_input}}"/>
-    <input type="submit" value="Search">
-</form>
-
 <table>
     <tr>
         <th>Item</th>
@@ -25,8 +20,10 @@
         <td>{{task.title}}</td>
         <td><a href="{% url 'task' task.id %}">View</a></td>
         <td><a href="{% url 'task-update' task.id %}">Update</a></td>
-        <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
+        <td><a href="{% url 'task-delete' task.id %}">Complete</a></td>
+        
     </tr>
     {% empty %}
     {% endfor %}
 </table>
+<td><a href="{% url 'timer' %}">Timer</a></td>
